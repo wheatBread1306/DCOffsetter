@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "LookAndFeel/CustomLooks.h"
 
 //==============================================================================
 /**
@@ -33,6 +34,7 @@ private:
     juce::Label dcOffsetLabelR;
     std::unique_ptr<SliderAttachment> dcOffsetAttachmentL;
     std::unique_ptr<SliderAttachment> dcOffsetAttachmentR;
+    CustomLookAndFeel customLookAndFeel;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

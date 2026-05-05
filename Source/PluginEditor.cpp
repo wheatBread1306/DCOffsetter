@@ -28,6 +28,7 @@ DCOffsetterAudioProcessorEditor::DCOffsetterAudioProcessorEditor (DCOffsetterAud
 {
   setSize (320, 220);
   setOpaque (true);
+  setLookAndFeel (&customLookAndFeel);
 
   auto configureSlider = [] (juce::Slider& slider)
   {
@@ -36,7 +37,7 @@ DCOffsetterAudioProcessorEditor::DCOffsetterAudioProcessorEditor (DCOffsetterAud
     slider.setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xfff39c12));
     slider.setColour (juce::Slider::rotarySliderOutlineColourId, juce::Colour (0xff14181b));
     slider.setColour (juce::Slider::thumbColourId, juce::Colour (0xfff39c12));
-    slider.setColour (juce::Slider::textBoxTextColourId, juce::Colours::white);
+    slider.setColour (juce::Slider::textBoxTextColourId, juce::Colour (0xffffff00).withAlpha (0.6f));
     slider.setColour (juce::Slider::textBoxOutlineColourId, juce::Colours::transparentBlack);
     slider.setColour (juce::Slider::textBoxBackgroundColourId, juce::Colour (0xff3f454b));
   };
@@ -49,12 +50,12 @@ DCOffsetterAudioProcessorEditor::DCOffsetterAudioProcessorEditor (DCOffsetterAud
 
   dcOffsetLabelL.setText ("Left", juce::dontSendNotification);
   dcOffsetLabelL.setJustificationType (juce::Justification::centred);
-  dcOffsetLabelL.setColour (juce::Label::textColourId, juce::Colours::white);
+  dcOffsetLabelL.setColour (juce::Label::textColourId, juce::Colour (0xffffff00).withAlpha (0.6f));
   addAndMakeVisible (dcOffsetLabelL);
 
   dcOffsetLabelR.setText ("Right", juce::dontSendNotification);
   dcOffsetLabelR.setJustificationType (juce::Justification::centred);
-  dcOffsetLabelR.setColour (juce::Label::textColourId, juce::Colours::white);
+  dcOffsetLabelR.setColour (juce::Label::textColourId, juce::Colour (0xffffff00).withAlpha (0.6f));
   addAndMakeVisible (dcOffsetLabelR);
 
   dcOffsetAttachmentL = std::make_unique<SliderAttachment> (audioProcessor.apvts, Parameters::DCOFFSET_L_ID, dcOffsetSliderL);
@@ -63,18 +64,19 @@ DCOffsetterAudioProcessorEditor::DCOffsetterAudioProcessorEditor (DCOffsetterAud
 
 DCOffsetterAudioProcessorEditor::~DCOffsetterAudioProcessorEditor()
 {
+  setLookAndFeel (nullptr);
 }
 
 //==============================================================================
 void DCOffsetterAudioProcessorEditor::paint (juce::Graphics& g)
 {
-  g.fillAll (juce::Colour (0xff41484e));
+  g.fillAll (juce::Colour (0xff111111));
 
   auto headerBounds = juce::Rectangle<int> (frameMargin,
                                               static_cast<int> (std::round (getHeight() * headerTopRatio)),
                         getWidth() - frameMargin * 2,
                                               static_cast<int> (std::round (getHeight() * headerHeightRatio)));
-  g.setColour (juce::Colour (0xff3a4045));
+  g.setColour (juce::Colour (0xffffff00).withAlpha (0.6f));
   g.fillRoundedRectangle (headerBounds.toFloat(), 2.0f);
 
   auto headerLeftBounds = headerBounds.removeFromLeft (juce::jmax (1, (headerBounds.getWidth() * 2) / 3));
@@ -84,11 +86,11 @@ void DCOffsetterAudioProcessorEditor::paint (juce::Graphics& g)
                                               static_cast<int> (std::round (getHeight() * footerTopRatio)),
                         getWidth() - frameMargin * 2,
                                               static_cast<int> (std::round (getHeight() * footerHeightRatio)));
-  g.setColour (juce::Colour (0xff3a4045));
+  g.setColour (juce::Colour (0xffffff00).withAlpha (0.6f));
   g.fillRoundedRectangle (footerBounds.toFloat(), 2.0f);
 
-  g.setColour (juce::Colours::white);
-  g.setFont (juce::Font (12.0f, juce::Font::bold));
+  g.setColour (juce::Colours::black);
+  g.setFont (juce::Font (22.0f, juce::Font::bold));
   g.drawFittedText ("DCOffsetter", headerLeftBounds, juce::Justification::centred, 1);
   g.setFont (juce::Font (12.0f));
   g.drawFittedText ("wheatBread\nPlugins", headerRightBounds, juce::Justification::centredLeft, 2);
