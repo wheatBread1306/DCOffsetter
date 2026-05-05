@@ -10,6 +10,8 @@
 
 #include <JuceHeader.h>
 #include <JucePluginDefines.h>
+#include "DSP/DCOffsetProcessor.h"
+#include "Parameters/PluginParameters.h"
 
 class DCOffsetterAudioProcessor  : public juce::AudioProcessor
 {
@@ -51,7 +53,14 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState apvts;
+
 private:
+    DCOffsetProcessor dcOffsetProcessorL, dcOffsetProcessorR;
+    
+    std::atomic<float>* dcOffsetParamL = nullptr;
+    std::atomic<float>* dcOffsetParamR = nullptr;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DCOffsetterAudioProcessor)
 };

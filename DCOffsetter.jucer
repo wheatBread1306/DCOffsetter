@@ -4,16 +4,26 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="wheatBreadPlugins"
               companyCopyright="&#169; 2026 wheatBread1306. All rights reserved."
               companyWebsite="https://wheatbread.dev/" companyEmail="info@wheatbread.dev"
-              pluginFormats="buildStandalone,buildVST3" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+              pluginFormats="buildStandalone,buildVST3">
   <MAINGROUP id="ZzOGTo" name="DCOffsetter">
     <GROUP id="{6C2E6F02-E968-C826-4538-7EA77DEEC769}" name="Source">
-      <FILE id="LSl0gg" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
-      <FILE id="wjHs3p" name="PluginProcessor.h" compile="0" resource="0"
-            file="Source/PluginProcessor.h"/>
-      <FILE id="n3lkPA" name="PluginEditor.cpp" compile="1" resource="0"
+      <GROUP id="{6D2A10FA-9B98-5281-ABF1-2B7E8D0C305F}" name="DSP">
+        <FILE id="OsBB05" name="DCOffsetProcessor.cpp" compile="1" resource="0"
+              file="Source/DSP/DCOffsetProcessor.cpp"/>
+        <FILE id="FxIK6M" name="DCOffsetProcessor.h" compile="0" resource="0"
+              file="Source/DSP/DCOffsetProcessor.h"/>
+      </GROUP>
+      <GROUP id="{29EBB4B6-6007-9897-E472-8AEB9B212037}" name="Parameters">
+        <FILE id="SeuiRx" name="PluginParameters.h" compile="0" resource="0"
+              file="Source/Parameters/PluginParameters.h"/>
+      </GROUP>
+      <FILE id="mWmNxq" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
-      <FILE id="fkM2RO" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="bMQhMx" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="tYbNU5" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="BTYreQ" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
