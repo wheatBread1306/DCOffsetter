@@ -1,5 +1,10 @@
 #include "DCOffsetProcessor.h"
 
+DCOffsetProcessor::DCOffsetProcessor()
+{
+    dcOffset.setCurrentAndTargetValue(0.0f);
+}
+
 void DCOffsetProcessor::prepare(juce::dsp::ProcessSpec &spec)
 {
     dcOffset.reset(spec.sampleRate, 0.01); // Smooth over 10ms

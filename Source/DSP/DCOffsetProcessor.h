@@ -5,7 +5,7 @@
 class DCOffsetProcessor
 {
 public:
-    DCOffsetProcessor() = default;
+    DCOffsetProcessor();
     ~DCOffsetProcessor() = default;
 
     void prepare(juce::dsp::ProcessSpec &spec);
