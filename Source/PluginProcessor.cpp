@@ -21,7 +21,7 @@ DCOffsetterAudioProcessor::DCOffsetterAudioProcessor()
 #endif
                          ),
 #endif
-          apvts(*this, nullptr, "PARAMETERS", Parameters::createParameterLayout())
+      apvts(*this, nullptr, "PARAMETERS", Parameters::createParameterLayout())
 {
     // パラメータのポインタを取得
     dcOffsetParamL = apvts.getRawParameterValue(Parameters::DCOFFSET_L_ID);
@@ -143,6 +143,10 @@ void DCOffsetterAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, j
     auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
+    auto numSamples = buffer.getNumSamples();
+    if (numSamples <= 0)
+        return;
+
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear(i, 0, buffer.getNumSamples());
 
@@ -152,7 +156,6 @@ void DCOffsetterAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, j
     dcOffsetProcessorL.process(buffer.getWritePointer(0), buffer.getNumSamples());
     if (totalNumOutputChannels > 1)
         dcOffsetProcessorR.process(buffer.getWritePointer(1), buffer.getNumSamples());
-    
 }
 
 //==============================================================================
@@ -163,7 +166,7 @@ bool DCOffsetterAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor *DCOffsetterAudioProcessor::createEditor()
 {
-    return new DCOffsetterAudioProcessorEditor (*this);
+    return new DCOffsetterAudioProcessorEditor(*this);
 }
 
 //==============================================================================
