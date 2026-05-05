@@ -163,7 +163,7 @@ bool DCOffsetterAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor *DCOffsetterAudioProcessor::createEditor()
 {
-    return new juce::GenericAudioProcessorEditor(*this);
+    return new DCOffsetterAudioProcessorEditor (*this);
 }
 
 //==============================================================================
