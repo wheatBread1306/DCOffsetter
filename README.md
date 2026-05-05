@@ -20,7 +20,6 @@ It provides independent bias control for left and right stereo channels, support
 - **Stereo DC Offset Control**: Set independent bias values for the left (L Bias) and right (R Bias) channels
 - **Smooth Parameter Changes**: Smooth parameter transitions using SmoothedValue
 - **Real-time Processing**: Low-latency audio processing
-- **Custom UI**: Professional look and feel editor
 
 ### Parameters
 
