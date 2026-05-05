@@ -14,27 +14,29 @@ void DCOffsetProcessor::process(float *samples, int numSamples)
 {
     using SIMDFloat = juce::dsp::SIMDRegister<float>;
     const int simdSize = (int)SIMDFloat::size();
+    
+    float currentOffset = dcOffset.getNextValue(); 
+    SIMDFloat offsetReg (currentOffset);
+
     int i = 0;
+
     while (i < numSamples && !SIMDFloat::isSIMDAligned(samples + i))
     {
-        samples[i] += dcOffset.getNextValue();
+        samples[i] += currentOffset;
         i++;
     }
     for (; i <= numSamples - simdSize; i += simdSize)
     {
         auto v = SIMDFloat::fromRawArray(samples + i);
-
-        SIMDFloat offset;
-        for (int s = 0; s < simdSize; ++s)
-            offset.set(s, dcOffset.getNextValue());
-
-        v = v + offset;
+        v = v + offsetReg;
         v.copyToRawArray(samples + i);
     }
     for (; i < numSamples; ++i)
     {
-        samples[i] += dcOffset.getNextValue();
+        samples[i] += currentOffset;
     }
+
+    dcOffset.skip(numSamples - 1); 
 }
 
 void DCOffsetProcessor::reset()
