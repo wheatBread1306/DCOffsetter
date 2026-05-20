@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="wheatBreadPlugins"
               companyCopyright="&#169; 2026 wheatBread1306. All rights reserved."
               companyWebsite="https://wheatbread.dev/" companyEmail="info@wheatbread.dev"
-              pluginFormats="buildStandalone,buildVST3">
+              pluginFormats="buildStandalone,buildVST3" version="1.0.1">
   <MAINGROUP id="ZzOGTo" name="DCOffsetter">
     <GROUP id="{6C2E6F02-E968-C826-4538-7EA77DEEC769}" name="Source">
       <GROUP id="{6D2A10FA-9B98-5281-ABF1-2B7E8D0C305F}" name="DSP">
@@ -53,7 +53,7 @@
     <VS2026 targetFolder="Builds/VisualStudio2026">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="DCOffsetter"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="DCOffsetter"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="DCOffsetter" extraCompilerFlags="/utf-8"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="C:/Program Files/JUCE/modules"/>
