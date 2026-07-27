@@ -130,6 +130,9 @@ juce::SmoothedValue<float> dcOffset{0.0f};
 ## License
 
 For details, see the [LICENSE](LICENSE) file.
+> [!NOTE]
+> The JUCE library code used in this project is licensed under AGPLv3. 
+> While my original code is provided under the MIT License, please be aware that many parts of it depend on the JUCE framework.
 
 ## Development Information
 
