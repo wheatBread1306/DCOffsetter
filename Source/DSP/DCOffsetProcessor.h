@@ -16,5 +16,7 @@ public:
 private:
     juce::SmoothedValue<float> dcOffset{0.0f};
 
+    double sampleRate = 44100.0;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DCOffsetProcessor)
 };
